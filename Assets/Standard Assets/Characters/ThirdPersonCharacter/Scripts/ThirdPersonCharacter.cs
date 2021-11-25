@@ -1,4 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -29,9 +34,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+		//public TextMeshProUGUI countText;
+		//private int count;
+		//List<Collider> collist = new List<Collider>();
 
 		void Start()
 		{
+			//count = 5;
+			//init();
+			//setScoreText();
+
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
 			m_Capsule = GetComponent<CapsuleCollider>();
@@ -75,14 +87,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			UpdateAnimator(move);
 		}
 
+		
 		void OnTriggerEnter(Collider other)
 		{
 			if (other.gameObject.CompareTag("PickUp"))
 			{
-				Destroy(other.gameObject);
+				other.gameObject.SetActive(false);
+				//collist.Add(other);
+				//count -= 1;
+				//setScoreText();
 			}
 		}
-
+		
 
 		void ScaleCapsuleForCrouching(bool crouch)
 		{
@@ -229,5 +245,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.applyRootMotion = false;
 			}
 		}
+		/*
+		void init()
+		{
+			setScoreText();
+			foreach (Collider c in collist)
+			{
+				c.gameObject.SetActive(true);
+			}
+			collist.Clear();
+			count = 5;
+		}
+		void setScoreText()
+		{
+			countText.text = "Score : " + count.ToString();
+		}
+		*/
 	}
+
 }
