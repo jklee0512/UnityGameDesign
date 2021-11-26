@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
             sec = (int)(time % 60);
             min = (int)(time / 60 % 60);
 
-            timer.text = string.Format("진행시간 : {0:00}:{1:00}", min, sec);
+            timer.text = string.Format("진행 시간 : {0:00}:{1:00}", min, sec);
 
             yield return null;
         }
