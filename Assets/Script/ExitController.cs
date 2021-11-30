@@ -18,7 +18,7 @@ public class ExitController : MonoBehaviour
         }
         if(findDoor.state == 3)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
             findDoor.state = 4;
         }
     }
